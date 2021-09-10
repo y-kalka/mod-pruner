@@ -9,7 +9,9 @@
   "types": "./dist/public_api.d.ts",
   "scripts": {
     "start": "ts-node src/bin.ts",
-    "build": "del dist/ && tsc"
+    "build": "del dist/ && tsc",
+    "prepublish": "npm run build",
+    "postversion": "git push --follow-tags && npm publish"
   },
   "engines": {
     "node": ">=14.0.0"
