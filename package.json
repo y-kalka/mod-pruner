@@ -4,7 +4,7 @@
   "description": "Cleans your node_modules folder from unnecessary files",
   "main": "./dist/public_api.ts",
   "bin": {
-    "mod-pruner": "./dist/bin.js"
+    "mod-pruner": "dist/bin.js"
   },
   "types": "./dist/public_api.d.ts",
   "scripts": {
@@ -37,7 +37,7 @@
     "small",
     "footprint"
   ],
-  "author": "",
+  "author": "Yannic Kalka",
   "license": "MIT",
   "dependencies": {
     "commander": "^8.1.0",
@@ -51,5 +51,13 @@
     "del-cli": "^4.0.1",
     "ts-node": "^10.2.1",
     "typescript": "^4.3.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/y-kalka/mod-pruner.git"
+  },
+  "bugs": {
+    "url": "https://github.com/y-kalka/mod-pruner/issues"
+  },
+  "homepage": "https://github.com/y-kalka/mod-pruner#readme"
 }
