@@ -1,0 +1,7 @@
+tsconfig.json
+package-lock.json
+node_modules/
+.gitignore
+.editorconfig
+src/
+.modules-cleanerrc

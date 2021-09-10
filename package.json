@@ -1,0 +1,54 @@
+{
+  "name": "mod-pruner",
+  "version": "1.0.0",
+  "description": "Cleans your node_modules folder from unnecessary files",
+  "main": "./dist/public_api.ts",
+  "bin": {
+    "mod-pruner": "./dist/bin.js"
+  },
+  "types": "./dist/public_api.d.ts",
+  "scripts": {
+    "start": "ts-node src/bin.ts",
+    "build": "del dist/ && tsc"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "files": [
+    "dist/",
+    "README.md"
+  ],
+  "keywords": [
+    "clean",
+    "node_modules",
+    "cleanup",
+    "modclean",
+    "reduce",
+    "size",
+    "prune",
+    "module-cleanup",
+    "scrub",
+    "scrubber",
+    "cleaner",
+    "unnecessary-files",
+    "docker",
+    "container",
+    "small",
+    "footprint"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^8.1.0",
+    "ignore": "^5.1.8",
+    "ora": "^5.4.1",
+    "pretty-bytes": "^5.6.0",
+    "table": "^6.7.1"
+  },
+  "devDependencies": {
+    "@types/node": "^14.17.11",
+    "del-cli": "^4.0.1",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.3.5"
+  }
+}
