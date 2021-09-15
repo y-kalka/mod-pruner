@@ -47,9 +47,13 @@ __tests__/
 *.bak
 *.iml
 *.log
+*.txt
 *.patch
 appveyor.yml
 AUTHORS
+NOTICE
+.mergify.yml
+*.bazel
 babel.config.js
 ChangeLog
 CHANGELOG.md
@@ -82,6 +86,7 @@ yarn.lock
 CODE_OF_CONDUCT.md
 AUTHORS.md
 SECURITY.md
+.browserslistrc
 
 
 # Relatively safe
