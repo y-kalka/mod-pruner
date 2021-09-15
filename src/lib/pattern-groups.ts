@@ -8,11 +8,13 @@ interface IPatternGroup {
   id: string;
   patterns: IPattern[];
   description?: string;
+  defaultInclude: boolean;
 }
 
 export const PATTERN_GROUPS: IPatternGroup[] = [
   {
     id: 'common',
+    defaultInclude: true,
     patterns: [
       { pattern: '.bin/', env: 'prod', description: 'In production environments the CLI executables for node packages are normaly not required' },
       { pattern: 'doc?/', env: 'prod' },
@@ -55,10 +57,14 @@ export const PATTERN_GROUPS: IPatternGroup[] = [
       { pattern: '.istanbul.yml' },
       { pattern: ['renovate.json?', '.renovaterc*'] },
       { pattern: ['babel.config.*', '.babelrc*'] },
+      { pattern: '*.pdf' },
+      { pattern: '*.zip' },
+      { pattern: '*.gz' },
     ],
   },
   {
     id: 'no-images',
+    defaultInclude: true,
     patterns: [
       { pattern: '*.heic' },
       { pattern: '*.webp' },
@@ -69,6 +75,7 @@ export const PATTERN_GROUPS: IPatternGroup[] = [
   },
   {
     id: 'no-test-files',
+    defaultInclude: true,
     patterns: [
       { pattern: 'test?/' },
       { pattern: '__tests__/' },
@@ -79,6 +86,7 @@ export const PATTERN_GROUPS: IPatternGroup[] = [
   },
   {
     id: 'no-fonts',
+    defaultInclude: true,
     description: 'Font files in the node_modules folder should not be required for production apps',
     patterns: [
       { pattern: '*.woff', env: 'prod' },
@@ -89,6 +97,7 @@ export const PATTERN_GROUPS: IPatternGroup[] = [
   },
   {
     id: 'no-typescript',
+    defaultInclude: true,
     patterns: [
       { pattern: '@types/', env: 'prod', description: 'The "node_modules/@types/..." directory is not required for non typescript projects' },
       { pattern: '*.ts', env: 'prod', description: 'Remove all .ts files including *.spec.ts, *.d.ts' },
@@ -96,6 +105,7 @@ export const PATTERN_GROUPS: IPatternGroup[] = [
   },
   {
     id: 'no-project-meta-files',
+    defaultInclude: true,
     patterns: [
       { pattern: ['README', 'README.md'], env: 'prod' },
       { pattern: ['AUTHORS', 'AUTHORS.md'] },
@@ -109,6 +119,7 @@ export const PATTERN_GROUPS: IPatternGroup[] = [
   },
   {
     id: 'no-ci-files',
+    defaultInclude: true,
     patterns: [
       { pattern: '.circleci/' },
       { pattern: '.github/' },
@@ -123,6 +134,7 @@ export const PATTERN_GROUPS: IPatternGroup[] = [
   },
   {
     id: 'no-license-files',
+    defaultInclude: false,
     patterns: [
       { pattern: 'LICENSE*', env: 'prod', description: 'Remove the license file from production app modules' },
     ],

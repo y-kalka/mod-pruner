@@ -13,3 +13,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Add additional patterns for new config files
+### Changed
+- Reworked the *init* command to use pattern groups for config file creation
