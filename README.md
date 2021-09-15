@@ -7,20 +7,23 @@ I was searching for tool to shrink my node modules folder as much as possible to
 ## Installation
 ```bash
 # save into your current project
-npm install --save-dev [[PACKAGENAME_HERE]]
+npm install --save-dev mod-pruner
 
 # or as a global package
-npm install -g [[PACKAGENAME_HERE]]
+npm install -g mod-pruner
+
+# or run it directly with npx
+npx mod-pruner ...
 ```
 
 ## Getting started
 
 ```bash
 # Create the config file
-npx [[PACKAGENAME_HERE]] init
+npx mod-pruner init
 
 # Cleanup all your node_modules folder under your current working directory
-npx [[PACKAGENAME_HERE]] --force
+npx mod-pruner --force
 ```
 ## Rules
 Rules are working the same as you known it from .gitignore,.eslintignore and so on. You can define filenames, pattern and also invert rules with the `!` prefix.
