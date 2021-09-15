@@ -2,7 +2,7 @@ import { lstat, readdir, rmdir, unlink } from 'fs/promises';
 import ignore, { Ignore } from 'ignore';
 import { join, relative } from 'path';
 import { findModuleDirectories } from './find-module-directories';
-import { getDirectorySize } from './git-directory-size';
+import { getDirectorySize } from './get-directory-size';
 
 interface IPruneOptions {
   force: boolean;
