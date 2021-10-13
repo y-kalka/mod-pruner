@@ -23,7 +23,7 @@ npx mod-pruner ...
 npx mod-pruner init
 
 # Cleanup all your node_modules folder under your current working directory
-npx mod-pruner --force
+npx mod-pruner prune --force
 ```
 ## Rules
 Rules are working the same as you known it from .gitignore,.eslintignore and so on. You can define filenames, pattern and also invert rules with the `!` prefix.
