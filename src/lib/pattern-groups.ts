@@ -120,7 +120,7 @@ export const PATTERN_GROUPS: IPatternGroup[] = [
       { pattern: ['README', 'README.*'], env: 'prod' },
       { pattern: ['AUTHORS', 'AUTHORS.*'] },
       { pattern: ['NOTICE', 'NOTICE.*'] },
-      { pattern: ['CHANGE', 'CHANGE.*'], description: 'Remove CHANGELOG and CHANGES files' },
+      { pattern: ['CHANGE', 'CHANGE.*', 'CHANGES', 'CHANGES.*'], description: 'Remove CHANGELOG and CHANGES files' },
       { pattern: ['CHANGELOG', 'CHANGELOG.*'], description: 'Remove CHANGELOG and CHANGES files' },
       { pattern: ['CONTRIBUTING', 'CONTRIBUTING.*'] },
       { pattern: ['HISTORY', 'HISTORY.*'] },
