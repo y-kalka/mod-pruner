@@ -40,6 +40,7 @@
   "author": "Yannic Kalka",
   "license": "MIT",
   "dependencies": {
+    "chalk": "^4.1.2",
     "commander": "^8.1.0",
     "ignore": "^5.1.8",
     "ora": "^5.4.1",

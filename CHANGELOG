@@ -4,12 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+<!-- ## [Unreleased] -->
+
+## [1.1.0] - 2021-10-15
+### Added
+- Add additional patterns for new config files
+
+### Changed
+- prune command uses the default patterns when no ".modprunerrc" was found ([#2](https://github.com/y-kalka/mod-pruner/issues/2))
+
 ## [1.0.0] - 2021-09-10
 ### Added
 - Add "prune" command which cleanes all node_modules folder under the current working directory
 - Add "init" command to quickly create a config file with some default rules
-
-
-## [Unreleased]
-### Added
-- Add additional patterns for new config files
