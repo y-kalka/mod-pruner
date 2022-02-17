@@ -11,7 +11,8 @@
     "start": "ts-node src/bin.ts",
     "build": "del dist/ && tsc",
     "prepublish": "npm run build",
-    "postversion": "git push --follow-tags && npm publish"
+    "postversion": "git push --follow-tags && npm publish",
+    "fmt": "prettier --write src"
   },
   "engines": {
     "node": ">=14.0.0"
@@ -41,17 +42,19 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.2",
-    "commander": "^8.1.0",
-    "ignore": "^5.1.8",
+    "commander": "^8.3.0",
+    "fast-glob": "^3.2.11",
+    "ignore": "^5.2.0",
     "ora": "^5.4.1",
     "pretty-bytes": "^5.6.0",
-    "table": "^6.7.1"
+    "table": "^6.8.0"
   },
   "devDependencies": {
-    "@types/node": "^14.17.11",
+    "@types/node": "^14.18.12",
     "del-cli": "^4.0.1",
-    "ts-node": "^10.2.1",
-    "typescript": "^4.3.5"
+    "prettier": "^2.5.1",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5"
   },
   "repository": {
     "type": "git",

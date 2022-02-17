@@ -79,8 +79,6 @@ renovate.json
 rollup.config.js
 test/
 tests/
-tsconfig*.json
-tslint.json
 wercker.yml
 yarn.lock
 CODE_OF_CONDUCT.md
@@ -88,13 +86,17 @@ AUTHORS.md
 SECURITY.md
 .browserslistrc
 
+# Typescript
+*.ts
+*.ts.map
+tsconfig*.json
+tslint.json
+!*.d.ts         # Always keep .ts definition files
 
 # Relatively safe
 *.flow
 *.mjs.map
 *.js.map
-*.ts.map
-*.ts
 *.spec.ts
 *.spec.js
 bower.json
@@ -107,8 +109,7 @@ Makefile*
 *.mkd
 *.markdown
 
-
-!build-long.md  # This file is used by @angular/cli
-!*.d.ts         # Always keep .ts definition files
+# @angular/cli
+!build-long.md
 
 `;
