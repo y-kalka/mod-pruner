@@ -1,6 +1,6 @@
 {
   "name": "mod-pruner",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Cleans your node_modules folder from unnecessary files",
   "main": "./dist/public_api.ts",
   "bin": {
