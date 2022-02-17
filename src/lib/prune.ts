@@ -1,4 +1,4 @@
-import fg from "fast-glob";
+import * as fg from "fast-glob";
 import type { Stats } from 'fs';
 import { unlink } from 'fs/promises';
 import ignore from 'ignore';

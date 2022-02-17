@@ -1,6 +1,6 @@
-import ora from 'ora';
+import * as ora from 'ora';
 import { resolve } from 'path';
-import prettyBytes from 'pretty-bytes';
+import * as prettyBytes from 'pretty-bytes';
 import { getBorderCharacters, table } from 'table';
 import { loadIgnorePatterns } from '../../lib/load-ignore-patterns';
 import { prune } from '../../lib/prune';
