@@ -14,7 +14,6 @@ export async function pruneCmd(
     config: string;
   },
 ) {
-  const prunedFiles: string[] = [];
   let prunedSize = BigInt(0);
   let prunedElements = BigInt(0);
   const configFile = resolve(options.config);
@@ -31,17 +30,14 @@ export async function pruneCmd(
   for await (const match of pruneStream) {
     prunedSize += BigInt(match.size);
     prunedElements++;
-    prunedFiles.push(match.path);
+
+    //  print file list of deleted items
+    if (options.verbose) {
+      console.info(match.path);
+    }
   }
 
   spinner.stop();
-
-  //  print file list of deleted items
-  if (options.verbose) {
-    for (const file of prunedFiles) {
-      console.info(file);
-    }
-  }
 
   //  print statistic
   if (options.stats) {
@@ -50,7 +46,7 @@ export async function pruneCmd(
     console.log(
       table(
         [
-          ['Items', nrFormat.format(prunedFiles.length)],
+          ['Items', nrFormat.format(prunedElements)],
           ['Estimated size', prettyBytes(Number(prunedSize))]
         ],
         {

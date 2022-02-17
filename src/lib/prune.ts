@@ -1,7 +1,8 @@
 import * as fg from "fast-glob";
 import type { Stats } from 'fs';
-import { unlink } from 'fs/promises';
+import { rm } from 'fs/promises';
 import ignore from 'ignore';
+import { pruneEmptyFolder } from './utils/prune-empty-folder';
 
 type PruneArgs = {
   cwd: string;
@@ -24,6 +25,7 @@ export async function* prune({ cwd, ignorePattern, force }: PruneArgs): AsyncGen
     {
       cwd: cwd,
       dot: true,
+      onlyFiles: true,
       followSymbolicLinks: false,
       absolute: true,
       markDirectories: true,
@@ -33,20 +35,20 @@ export async function* prune({ cwd, ignorePattern, force }: PruneArgs): AsyncGen
   );
 
   for await (const file of fileStream) {
-    const path = (file as any).path;
-    const size = ((file as any).stats as Stats).size;
+    const path: string = (file as any).path;
+    const size: number = ((file as any).stats as Stats).size;
 
     // only keep the path after node_modules "../node_modules/lodash/package.json" to "lodash/package.json"
     const ignorePath = path.replace(/^.+\/node_modules\//, '');
-    const keepFile = ig.ignores(ignorePath) === false;
+    const keep = ig.ignores(ignorePath) === false;
 
-    if (keepFile) {
+    if (keep) {
       continue;
     }
 
     // Delete the file permanently
     if (force) {
-      await unlink(path);
+      await rm(path);
     }
 
     yield {
@@ -54,4 +56,7 @@ export async function* prune({ cwd, ignorePattern, force }: PruneArgs): AsyncGen
       size: size,
     }
   }
+
+  // Now prune all empty folders
+  await pruneEmptyFolder({ cwd, force });
 }
