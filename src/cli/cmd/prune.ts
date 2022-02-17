@@ -14,16 +14,25 @@ export async function pruneCmd(
     config: string;
   },
 ) {
+  const prunedFiles: string[] = [];
+  let prunedSize = BigInt(0);
+  let prunedElements = BigInt(0);
   const configFile = resolve(options.config);
   const patterns = await loadIgnorePatterns(configFile);
 
   const spinner = ora('Cleaning node_modules ...').start();
 
-  const { prunedFiles, prunedDiskSize, prunedFolders } = await prune({
+  const pruneStream = prune({
     cwd: options.currentWorkingDirectory,
-    patterns,
+    ignorePattern: patterns,
     force: options.force,
   });
+
+  for await (const match of pruneStream) {
+    prunedSize += BigInt(match.size);
+    prunedElements++;
+    prunedFiles.push(match.path);
+  }
 
   spinner.stop();
 
@@ -41,9 +50,8 @@ export async function pruneCmd(
     console.log(
       table(
         [
-          ['Files', nrFormat.format(prunedFiles.length)],
-          ['Folders', nrFormat.format(prunedFolders.length)],
-          ['Total size', prettyBytes(prunedDiskSize)]
+          ['Items', nrFormat.format(prunedFiles.length)],
+          ['Estimated size', prettyBytes(Number(prunedSize))]
         ],
         {
           border: getBorderCharacters('norc'),
