@@ -37,7 +37,10 @@ export async function pruneEmptyFolder({
 
   // When we delete a empty child folder the parent folder is not empty at the time of the check. So we do another run delete empty folders
   if (prunedFolders !== 0) {
-    prunedFolders += await pruneEmptyFolder({ cwd, force });
+    // only prune recursiv if the force option is true. Otherwise its a endlesss loop
+    if (force === true) {
+      prunedFolders += await pruneEmptyFolder({ cwd, force });
+    }
   }
 
   return prunedFolders;
