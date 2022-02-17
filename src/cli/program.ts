@@ -7,7 +7,7 @@ import { pruneCmd } from "./cmd/prune";
 
 const program = new Command();
 
-program.name("modules-cleaner");
+program.name("mod-pruner");
 
 program
   .command("prune")
