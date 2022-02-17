@@ -1,28 +1,27 @@
-import * as fg from 'fast-glob';
-import { readdir, rm } from 'fs/promises';
+import * as fg from "fast-glob";
+import { readdir, rm } from "fs/promises";
 
 type PruneEmptyFolderArgs = {
   cwd: string;
   force: boolean;
-}
+};
 
-export async function pruneEmptyFolder({ cwd, force }: PruneEmptyFolderArgs): Promise<number> {
+export async function pruneEmptyFolder({
+  cwd,
+  force,
+}: PruneEmptyFolderArgs): Promise<number> {
   let prunedFolders = 0;
-  const folderStream = fg.stream(
-    ['**/node_modules/**'],
-    {
-      cwd: cwd,
-      dot: true,
-      followSymbolicLinks: false,
-      onlyDirectories: true,
-      absolute: true,
-    },
-  );
+  const folderStream = fg.stream(["**/node_modules/**"], {
+    cwd: cwd,
+    dot: true,
+    followSymbolicLinks: false,
+    onlyDirectories: true,
+    absolute: true,
+  });
 
   for await (const folder of folderStream) {
-
-    if (typeof folder !== 'string') {
-      throw Error('Expected a string');
+    if (typeof folder !== "string") {
+      throw Error("Expected a string");
     }
 
     const isEmpty = await checkIsEmpty(folder);
@@ -43,7 +42,6 @@ export async function pruneEmptyFolder({ cwd, force }: PruneEmptyFolderArgs): Pr
 
   return prunedFolders;
 }
-
 
 async function checkIsEmpty(path: string): Promise<boolean> {
   const dirContent = await readdir(path);
